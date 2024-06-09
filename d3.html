@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice and Chat Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="d3c.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <button class="sidebar-button" onclick="showConverter('voiceToChat')">
+                <i class="ri-mic-fill"></i> Voice to Text
+            </button>
+            <button class="sidebar-button" onclick="showConverter('chatToVoice')">
+                <i class="ri-message-2-fill"></i> Chat to Voice
+            </button>
+        </div>
+        <div class="container">
+            <div class="converter" id="voiceToChat">
+                <div class="header">
+                    <img src="c:\Users\ANIRUDH ASHOKKUMAR\Downloads\download__1_-removebg-preview.png" alt="Voice Search Logo" class="logo">
+                    <h2>Voice to Text</h2>
+                </div>
+                <div class="input-section">
+                    <button class="button">
+                        <i class="ri-mic-fill"></i> Start Voice
+                    </button>
+                    <input type="file" class="file-input" id="fileInput">
+                    <div id="fileName" class="file-name">No file chosen</div>
+                    <button class="button">
+                        <i class="ri-message-2-fill"></i> Convert
+                    </button>
+                </div>
+                <div class="output-section">
+                    <textarea placeholder="Voice to Chat Output" readonly></textarea>
+                    <i class="ri-file-copy-line icon"></i>
+                    <button class="button">
+                        <i class="ri-download-line"></i> Download
+                    </button>
+                </div>
+            </div>
+
+            <div class="converter" id="chatToVoice" style="display: none;">
+                <div class="header">
+                    <img src="c:\Users\ANIRUDH ASHOKKUMAR\Downloads\download-removebg-preview.png" alt="Chat Logo" class="logo">
+                    <h2>Chat to Voice</h2>
+                </div>
+                <div class="input-section">
+                    <textarea placeholder="Enter text to convert to voice"></textarea>
+                    <i class="ri-message-2-fill icon"></i>
+                </div>
+                <div class="output-section">
+                    <button class="button">
+                        <i class="ri-play-circle-fill"></i> Convert to Voice
+                    </button>
+                    <button class="button">
+                        <i class="ri-play-circle-fill"></i> Play
+                    </button>
+                    <button class="button">
+                        <i class="ri-download-line"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function() {
+            var fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+            document.getElementById('fileName').textContent = fileName;
+        });
+
+        function showConverter(converterId) {
+            document.getElementById('voiceToChat').style.display = 'none';
+            document.getElementById('chatToVoice').style.display = 'none';
+            document.getElementById(converterId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
